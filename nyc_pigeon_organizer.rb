@@ -16,38 +16,55 @@
 #     end
 #   end
 
-def nyc_pigeon_organizer(data)
-pigeon_list = {}
+# def nyc_pigeon_organizer(data)
+# pigeon_list = {}
 
-pigeon_data.each do |property, property_hash|
-  property_hash.each do |values, birds_array|
-    birds_array.each do |name|
-      if pigeon_list[name] == nil
-        if pigeon_list[name][property]
-          pigeon_list[name][property] = []
-        else
-          pigeon_list[name][property] = []
-        end
-      end
-    end
-  end
+# pigeon_data.each do |property, property_hash|
+#   property_hash.each do |values, birds_array|
+#     birds_array.each do |name|
+#       if pigeon_list[name] == nil
+#         if pigeon_list[name][property]
+#           pigeon_list[name][property] = []
+#         else
+#           pigeon_list[name][property] = []
+#         end
+#       end
+#     end
+#   end
     
-  pigeon_list.each do |name,property_hash|
-  property_hash.each do |pigeon_list_value, birds_array|
-  pigeon_data.each do |property, property_hash|
-    property_hash.each do |values, birds_array|
+#   pigeon_list.each do |name,property_hash|
+#   property_hash.each do |pigeon_list_value, birds_array|
+#   pigeon_data.each do |property, property_hash|
+#     property_hash.each do |values, birds_array|
       
-      birds_array.each do |element|
-        if element == name && pigeon_list_value == property_hash
-          pigeon_list[name][pigeon_list_value] <<values.to_s
-end
-end
-end
-end
-end
-end
-pigeon_list
-end
+#       birds_array.each do |element|
+#         if element == name && pigeon_list_value == property_hash
+#           pigeon_list[name][pigeon_list_value] <<values.to_s
+# end
+# end
+# end
+# end
+# end
+# end
+# pigeon_list
+# end
 
+def nyc_pigeon_organizer(data)
+  pigeon_list = {}
+  data.each do |color_gender_lives, value|
+    value.each do |stats, all_names|
+      all_names.each do |name|
+        if pigeon_list[name] == nil
+          pigeon_list[name] = {}
+        end
+        if pigeon_list[name][color_gender_lives] == nil
+          pigeon_list[name][color_gender_lives] = []
+        end
+        pigeon_list[name][color_gender_lives].push(stats.to_s)
+      end
+    end 
+  end
+  pigeon_list
+end
 
 
